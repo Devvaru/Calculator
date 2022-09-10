@@ -1,0 +1,25 @@
+body {
+    margin: 0px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(227deg, #99A5B2 10%, #E9EAEB 83%);
+}
+
+#frame {
+    height: 760px;
+    width: 360px;
+    background: linear-gradient(180deg, #495055 0%, rgba(181, 189, 198, 0.33) 100%);
+    box-shadow: 10px 10px 20px rgba(155, 166, 179, 0.25);
+    border-radius: 60px;
+    display: flex;
+    align-items: flex-end;
+}
+
+#innerframe {
+    height: 70%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(73, 80, 85, 0.58) 0%, rgba(181, 189, 198, 0.53) 100%);
+    border-radius: 60px 0px 60px 60px;
+}
