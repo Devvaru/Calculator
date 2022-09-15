@@ -34,19 +34,20 @@ body {
         "btn7 btn8 btn9 btnMultiply"
         "btn4 btn5 btn6 btnSubtract"
         "btn1 btn2 btn3 btnAdd"
-        "btn0 btn0 btnDecimal btnEqual";
+        "btn0 btnDecimal btnEqual btnEqual";
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     /* grid-template-columns: repeat(4, 5fr); */
-    /* gap: 10px; */
+    gap: 10px;
+    /* padding: 10px; */
     /* justify-items: center; */
 }
 
 button {
-    /* width: 85%;
-    height: 75%; */
     border-radius: 20px;
     border-style: none;
+    font-size: 35px;
+    color: #52585E;
 }
 
 button:hover {
