@@ -4,12 +4,16 @@
 // multiply
 // divide
 
-const add = function add(a, b) {
-    return a + b;
+const add = function add(arr) {
+    return arr.length
+        ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
+        : 0;
 };
 
-const subtract = function subtract(a, b) {
-    return a - b;
+const subtract = function subtract(arr) {
+    return arr.length
+        ? arr.reduce((accumulator, nextItem) => accumulator - nextItem)
+        : 0;
 };
 
 const multiply = function multiply(arr) {
