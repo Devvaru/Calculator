@@ -22,6 +22,15 @@ const btn0 = document.querySelector("#btn0");
 const btnDecimal = document.querySelector("#btnDecimal");
 const btnEqual = document.querySelector("#btnEqual");
 
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.onclick = () => {
+        console.log(button.id);
+    };
+});
+
+
 const add = function add(arr) {
     return arr.length
         ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
