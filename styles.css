@@ -8,7 +8,7 @@ body {
 }
 
 #frame {
-    height: 760px;
+    height: 700px;
     width: 360px;
     background: linear-gradient(180deg, #495055 0%, rgba(181, 189, 198, 0.33) 100%);
     box-shadow: 10px 10px 20px rgba(155, 166, 179, 0.25);
@@ -18,11 +18,12 @@ body {
 }
 
 #innerFrame {
-    height: 70%;
+    height: 60%;
     width: 100%;
     background: linear-gradient(180deg, rgba(73, 80, 85, 0.58) 0%, rgba(181, 189, 198, 0.53) 100%);
     border-radius: 60px 0px 60px 60px;
     display: flex;
+    padding: 40px 20px 40px 20px;
 }
 
 .btnContainer {
@@ -48,6 +49,8 @@ button {
     border-style: none;
     font-size: 35px;
     color: #52585E;
+    /* width: 70px;
+    height: 70px; */
 }
 
 button:hover {

@@ -4,6 +4,7 @@
 // multiply
 // divide
 
+
 const add = function add(arr) {
     return arr.length
         ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
@@ -28,6 +29,6 @@ const divide = function divide(arr) {
         : 0;
 };
 
-function operate() {
-
+function operate(operator,a,b) {
+    //represents equals button action
 };
