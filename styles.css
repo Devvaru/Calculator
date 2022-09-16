@@ -14,21 +14,34 @@ body {
     box-shadow: 10px 10px 20px rgba(155, 166, 179, 0.25);
     border-radius: 60px;
     display: flex;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+#calcText {
+    height: 65px;
+    width: 100%;
+    background-color: transparent;
+    border-style: none;
+    color: #fff;
+    font-size: 60px;
+    text-align: right;
+    padding: 25px;
 }
 
 #innerFrame {
-    height: 60%;
+    height: 75%;
     width: 100%;
     background: linear-gradient(180deg, rgba(73, 80, 85, 0.58) 0%, rgba(181, 189, 198, 0.53) 100%);
     border-radius: 60px 0px 60px 60px;
-    display: flex;
-    padding: 40px 20px 40px 20px;
+    padding: 30px;
 }
 
 .btnContainer {
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
     display: grid;
     grid-template-areas:
         "btnClear btnAllClear btnInteger btnDivide"
@@ -38,10 +51,7 @@ body {
         "btn0 btnDecimal btnEqual btnEqual";
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    /* grid-template-columns: repeat(4, 5fr); */
     gap: 10px;
-    /* padding: 10px; */
-    /* justify-items: center; */
 }
 
 button {
@@ -99,7 +109,7 @@ button:hover {
     grid-area: btn8;
 }
 
-#btn9  {
+#btn9 {
     grid-area: btn9;
 }
 
@@ -131,7 +141,7 @@ button:hover {
     grid-area: btn2;
 }
 
-#btn3  {
+#btn3 {
     grid-area: btn3;
 }
 
