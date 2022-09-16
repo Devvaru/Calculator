@@ -26,10 +26,17 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
     button.onclick = () => {
-        console.log(button.id);
+        if (button.value == Number) {
+            console.log(button.value);
+            return button.value;
+        } else {
+            console.log(button.id);
+            return(button.id);
+        };
     };
 });
 
+const calcText = document.querySelector("#calcText");
 
 const add = function add(arr) {
     return arr.length
