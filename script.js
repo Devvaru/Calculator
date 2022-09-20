@@ -24,10 +24,14 @@ const btnEqual = document.querySelector("#btnEqual");
 
 const buttons = document.querySelectorAll("button");
 
+let memory = [];
+
 buttons.forEach((button) => {
     button.onclick = () => {
-        if (button.value == Number) {
+        if (typeof button.value !== String) {
             console.log(button.value);
+            memory = memory.push(button.value);
+            console.log(memory);
             return button.value;
         } else {
             console.log(button.id);
