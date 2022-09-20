@@ -1,3 +1,5 @@
+const calcText = document.querySelector("#calcText");
+
 const btnClear = document.querySelector("#btnClear");
 const btnAllCLear = document.querySelector("#btnAllCLear");
 const btnInteger = document.querySelector("#btnInteger");
@@ -31,15 +33,13 @@ buttons.forEach((button) => {
         if (typeof button.value !== String) {
             memory.push(button.value);
             console.log(memory);
-            return button.value;
+
+            calcText.textContent = button.value;
         } else {
             console.log(button.id);
-            return(button.id);
         };
     };
 });
-
-const calcText = document.querySelector("#calcText");
 
 const add = function add(arr) {
     return arr.length

@@ -65,6 +65,7 @@ button {
 
 button:hover {
     opacity: 80%;
+    cursor: pointer;
 }
 
 /* #btn0 {
