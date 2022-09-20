@@ -29,8 +29,7 @@ let memory = [];
 buttons.forEach((button) => {
     button.onclick = () => {
         if (typeof button.value !== String) {
-            console.log(button.value);
-            memory = memory.push(button.value);
+            memory.push(button.value);
             console.log(memory);
             return button.value;
         } else {
