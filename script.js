@@ -1,7 +1,7 @@
 const calcText = document.querySelector("#calcText");
 
 const btnClear = document.querySelector("#btnClear");
-const btnAllCLear = document.querySelector("#btnAllCLear");
+const btnAllClear = document.querySelector("#btnAllClear");
 const btnInteger = document.querySelector("#btnInteger");
 const btnDivide = document.querySelector("#btnDivide");
 
@@ -32,7 +32,9 @@ buttons.forEach((button) => {
     button.onclick = () => {
         if (typeof button.value !== String) {
             memory.push(button.value);
+            calcText.value = memory;
             console.log(memory);
+
 
             calcText.textContent = button.value;
         } else {
@@ -40,6 +42,11 @@ buttons.forEach((button) => {
         };
     };
 });
+
+btnAllClear.onclick = () => {
+    memory = [];
+    calcText.value = memory;
+}
 
 const add = function add(arr) {
     return arr.length
