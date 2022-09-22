@@ -27,18 +27,16 @@ const btnEqual = document.querySelector("#btnEqual");
 const buttons = document.querySelectorAll("button");
 
 let memArr = [];
-let mem = [];
-
 
 buttons.forEach((button) => {
     button.onclick = () => {
-        console.log(typeof button.value);
 
-        if (typeof button.value === "string") {
+        if (button.value) {
             memArr.push(button.value);
             calcText.value = memArr.join("");
             console.log(memArr);
             calcText.textContent = button.value;
+
         } else {
             console.log(button.id);
         };
@@ -74,6 +72,6 @@ const divide = function divide(arr) {
         : 0;
 };
 
-function operate(operator,a,b) {
-    return operator(a,b);
+function operate(operator, a, b) {
+    return operator(a, b); //use reduce or arr?
 };
