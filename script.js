@@ -26,16 +26,18 @@ const btnEqual = document.querySelector("#btnEqual");
 
 const buttons = document.querySelectorAll("button");
 
-let memory = [];
+let memArr = [];
+let mem = [];
+
 
 buttons.forEach((button) => {
     button.onclick = () => {
-        if (typeof button.value !== String) {
-            memory.push(button.value);
-            calcText.value = memory;
-            console.log(memory);
+        console.log(typeof button.value);
 
-
+        if (typeof button.value === "string") {
+            memArr.push(button.value);
+            calcText.value = memArr.join("");
+            console.log(memArr);
             calcText.textContent = button.value;
         } else {
             console.log(button.id);
@@ -44,12 +46,12 @@ buttons.forEach((button) => {
 });
 
 btnAllClear.onclick = () => {
-    memory = [];
-    calcText.value = memory;
-}
+    memArr = [];
+    calcText.value = memArr;
+};
 
 const add = function add(arr) {
-    return arr.length
+    return arr.lengthS
         ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
         : 0;
 };
