@@ -48,6 +48,14 @@ btnAllClear.onclick = () => {
     calcText.value = memArr;
 };
 
+btnClear.onclick = () => {
+    memArr.splice(memArr.length-1, 1);
+    calcText.value = memArr.join("");
+    console.log(memArr);
+    //splice off last item in array?
+
+};
+
 const add = function add(arr) {
     return arr.lengthS
         ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
