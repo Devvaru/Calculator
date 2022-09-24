@@ -31,11 +31,21 @@ let memArr = [];
 buttons.forEach((button) => {
     button.onclick = () => {
 
-        if (button.value) {
-            memArr.push(button.value);
+        if (button.classList.contains("number")) {
+            memArr.push(Number(button.value));
             calcText.value = memArr.join("");
+
             console.log(memArr);
+
             calcText.textContent = button.value;
+
+        } else if (typeof memArr[memArr.length-1] == "number" && button.classList.contains("operator")){
+            memArr.push(button.textContent);
+            calcText.value = memArr.join("");
+
+            console.log(memArr);
+            
+            calcText.textContent = button.textContent;
 
         } else {
             console.log(button.id);
@@ -52,8 +62,6 @@ btnClear.onclick = () => {
     memArr.splice(memArr.length-1, 1);
     calcText.value = memArr.join("");
     console.log(memArr);
-    //splice off last item in array?
-
 };
 
 const add = function add(arr) {
