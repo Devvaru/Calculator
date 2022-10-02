@@ -32,20 +32,44 @@ buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
-            memArr.push(Number(button.value));
+            if (typeof memArr[memArr.length - 1] == "number") {
+
+                
+
+                // memArr[memArr.length - 1].toString();
+                // memArr.splice([memArr.length-1][0], 1, (button.value));
+                // memArr.join();
+                // console.log(memArr);
+
+
+                // memArr[memArr.length - 1][memArr.length].push(Number(button.value));
+
+                // memArr.push(Number(button.value));
+                // memArr.join();
+            } else {
+
+
+                memArr.push([Number(button.value)]);
+            };
+
+            //leave it as a string until operator is used?
+            //to locale string?
+
             calcText.value = memArr.join("");
 
             console.log(memArr);
 
             calcText.textContent = button.value;
 
-        } else if (typeof memArr[memArr.length-1] == "number" && button.classList.contains("operator")){
+        } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("operator")) {
             memArr.push(button.textContent);
             calcText.value = memArr.join("");
 
             console.log(memArr);
-            
+
             calcText.textContent = button.textContent;
+
+        } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
 
         } else {
             console.log(button.id);
@@ -53,13 +77,18 @@ buttons.forEach((button) => {
     };
 });
 
+// memArr[memArr.length - 1][memArr.length].push(Number(button.value));
+
+// if memArr has string and last item is number and pressed equals, calculate
+// if last item is number, remove comma from memArr - splice
+
 btnAllClear.onclick = () => {
     memArr = [];
     calcText.value = memArr;
 };
 
 btnClear.onclick = () => {
-    memArr.splice(memArr.length-1, 1);
+    memArr.splice(memArr.length - 1, 1);
     calcText.value = memArr.join("");
     console.log(memArr);
 };
