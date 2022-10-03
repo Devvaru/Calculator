@@ -27,52 +27,37 @@ const btnEqual = document.querySelector("#btnEqual");
 const buttons = document.querySelectorAll("button");
 
 let memArr = [];
+let a = [];
+let operator = [];
+let b = [];
 
 buttons.forEach((button) => {
     button.onclick = () => {
-
         if (button.classList.contains("number")) {
-            if (typeof memArr[memArr.length - 1] == "number") {
+            if (typeof (a[a.length - 1]) === "string") {
+                a.push((button.value));
+                a.join();
+                //Number(a);
+                console.log(a.join());
+                console.log(a);
 
-                
-
-                // memArr[memArr.length - 1].toString();
-                // memArr.splice([memArr.length-1][0], 1, (button.value));
-                // memArr.join();
-                // console.log(memArr);
-
-
-                // memArr[memArr.length - 1][memArr.length].push(Number(button.value));
-
-                // memArr.push(Number(button.value));
-                // memArr.join();
             } else {
-
-
-                memArr.push([Number(button.value)]);
+                a.push((button.value));
+                console.log(a);
             };
 
-            //leave it as a string until operator is used?
-            //to locale string?
 
-            calcText.value = memArr.join("");
-
-            console.log(memArr);
-
-            calcText.textContent = button.value;
 
         } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("operator")) {
-            memArr.push(button.textContent);
-            calcText.value = memArr.join("");
 
-            console.log(memArr);
-
-            calcText.textContent = button.textContent;
 
         } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
 
+
+
         } else {
-            console.log(button.id);
+
+
         };
     };
 });
