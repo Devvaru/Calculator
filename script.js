@@ -34,15 +34,15 @@ let b = [];
 buttons.forEach((button) => {
     button.onclick = () => {
         if (button.classList.contains("number")) {
-            if (typeof (a[a.length - 1]) === "string") {
-                a.push((button.value));
-                a.join();
+            if (typeof (a[a.length - 1]) === "number") {
+                a.push(Number(button.value));
+                a = [Number(a.join(""))];
                 //Number(a);
-                console.log(a.join());
+                // console.log(a.join(""));
                 console.log(a);
 
             } else {
-                a.push((button.value));
+                a.push(Number(button.value));
                 console.log(a);
             };
 
@@ -52,7 +52,6 @@ buttons.forEach((button) => {
 
 
         } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
-
 
 
         } else {
