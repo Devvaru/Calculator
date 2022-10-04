@@ -36,20 +36,21 @@ buttons.forEach((button) => {
         if (button.classList.contains("number")) {
             if (typeof (a[a.length - 1]) === "number") {
                 a.push(Number(button.value));
-                a = [Number(a.join(""))];
-                //Number(a);
-                // console.log(a.join(""));
+                memArr = [Number(a.join(""))];
+
                 console.log(a);
+                console.log(memArr);
 
             } else {
                 a.push(Number(button.value));
                 console.log(a);
+                console.log(memArr);
             };
 
-
-
         } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("operator")) {
-
+            operator = button.textContent;
+            memArr.push(operator);
+            console.log(memArr);
 
         } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
 
@@ -68,6 +69,9 @@ buttons.forEach((button) => {
 
 btnAllClear.onclick = () => {
     memArr = [];
+    a = [];
+    operator = [];
+    b = [];
     calcText.value = memArr;
 };
 
