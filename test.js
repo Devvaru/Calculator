@@ -22,9 +22,6 @@ buttons.forEach((button) => {
                
             };
 
-            //leave it as a string until operator is used?
-            //to locale string?
-
             calcText.value = memArr.join("");
 
             console.log(memArr);

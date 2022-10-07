@@ -28,44 +28,75 @@ const buttons = document.querySelectorAll("button");
 
 let memArr = [];
 let a = [];
-let operator = [];
+let operator;
 let b = [];
 
 buttons.forEach((button) => {
     button.onclick = () => {
+
         if (button.classList.contains("number")) {
-            if (typeof (a[a.length - 1]) === "number") {
-                a.push(Number(button.value));
-                memArr = [Number(a.join(""))];
-
-                console.log(a);
-                console.log(memArr);
-
-            } else {
-                a.push(Number(button.value));
-                console.log(a);
-                console.log(memArr);
-            };
-
-        } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("operator")) {
-            operator = button.textContent;
-            memArr.push(operator);
-            console.log(memArr);
-
-        } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
-
-
-        } else {
-
-
+            memArr.push(Number(button.value))
+            console.log(memArr)
+        } else if (button.classList.contains("operator")) {
+            operator = button.id;
+            a = Number(memArr.join(""));
+            memArr = [];
+            console.log(operator, a, memArr)
+        } else if (button.classList.contains("equal")) {
+            b = Number(memArr.join(""));
+            // operate(operator,a,b);
+            console.log(typeof a, typeof b)
+            console.log(operator, a, b)
+            console.log(operate(operator,a,b));
         };
+
+
+        // if (button.classList.contains("number")) {
+        //     if (memArr == [] || a[1]) {
+        //         a.push(Number(button.value));
+        //         memArr = [Number(a.join(""))];
+        //         console.log("a", a);
+        //         console.log("memarra", memArr);
+
+        //     } else if (operator != [] || b == [] || b[1]) {
+        //         b.push(Number(button.value));
+        //         memArr = [Number(b.join(""))];
+        //         console.log("b",b);
+        //         console.log("memarrb", memArr);
+        //     };
+        // };
+
+
+        // if (button.classList.contains("number")) {
+        //     if (typeof (a[a.length - 1]) === "number") {
+        //         a.push(Number(button.value));
+        //         memArr = [Number(a.join(""))];
+        //         console.log("a", a);
+        //         console.log(memArr);
+
+        //     } else {
+
+        //         //add
+        //         //else if memArr length-1 is operator then do b
+        //         memArr = a.push(Number(button.value));
+        //         console.log(memArr);
+        //     };
+
+
+        // } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("operator")) {
+        //     operator = button.textContent;
+        //     memArr.push(operator);
+        //     console.log(memArr);
+
+        // } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
+
+
+        // } else {
+        // };
+
+
     };
 });
-
-// memArr[memArr.length - 1][memArr.length].push(Number(button.value));
-
-// if memArr has string and last item is number and pressed equals, calculate
-// if last item is number, remove comma from memArr - splice
 
 btnAllClear.onclick = () => {
     memArr = [];
@@ -81,30 +112,49 @@ btnClear.onclick = () => {
     console.log(memArr);
 };
 
-const add = function add(arr) {
-    return arr.lengthS
-        ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
-        : 0;
+function add(a, b) {
+    return a + b;
 };
 
-const subtract = function subtract(arr) {
-    return arr.length
-        ? arr.reduce((accumulator, nextItem) => accumulator - nextItem)
-        : 0;
+function subtract(a, b) {
+    return a - b;
 };
 
-const multiply = function multiply(arr) {
-    return arr.length
-        ? arr.reduce((accumulator, nextItem) => accumulator * nextItem)
-        : 0;
+function multiply(a, b) {
+    return a * b;
 };
 
-const divide = function divide(arr) {
-    return arr.length
-        ? arr.reduce((accumulator, nextItem) => accumulator / nextItem)
-        : 0;
+function divide(a, b) {
+    return a / b;
 };
 
 function operate(operator, a, b) {
-    return operator(a, b); //use reduce or arr?
+    return window[operator](a, b);
 };
+
+
+
+
+// const add = function add(arr) {
+//     return arr.lengthS
+//         ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
+//         : 0;
+// };
+
+// const subtract = function subtract(arr) {
+//     return arr.length
+//         ? arr.reduce((accumulator, nextItem) => accumulator - nextItem)
+//         : 0;
+// };
+
+// const multiply = function multiply(arr) {
+//     return arr.length
+//         ? arr.reduce((accumulator, nextItem) => accumulator * nextItem)
+//         : 0;
+// };
+
+// const divide = function divide(arr) {
+//     return arr.length
+//         ? arr.reduce((accumulator, nextItem) => accumulator / nextItem)
+//         : 0;
+// };
