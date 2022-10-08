@@ -33,15 +33,14 @@ let b = [];
 let display = [];
 let tempArr;
 
-console.log(typeof operator)
-
 buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
             memArr.push(Number(button.value));
+            console.log(memArr)
 
-            display.push(button.textContent);
+            display.push(button.value);
             calcText.value = display.join("");
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
