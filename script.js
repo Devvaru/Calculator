@@ -30,80 +30,41 @@ let memArr = [];
 let a = [];
 let operator;
 let b = [];
+let display = [];
 
 buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
             memArr.push(Number(button.value));
-            console.log("num", memArr)
+
+            display.push(button.textContent);
+            calcText.value = display.join("");
 
         } else if (button.classList.contains("operator")) {
             operator = button.id;
             a = Number(memArr.join(""));
             memArr = [];
 
+            display = Array.from(display);
+            display.push(button.textContent);
+            calcText.value = display.join("");
+
         } else if (button.classList.contains("equal")) {
             b = Number(memArr.join(""));
-            console.log(operator, a, b)
-            console.log(operate(operator,a,b));
 
             memArr = [operate(operator,a,b)];
+            display = memArr;
+            calcText.value = display;
         };
-
-
-        // if (button.classList.contains("number")) {
-        //     if (memArr == [] || a[1]) {
-        //         a.push(Number(button.value));
-        //         memArr = [Number(a.join(""))];
-        //         console.log("a", a);
-        //         console.log("memarra", memArr);
-
-        //     } else if (operator != [] || b == [] || b[1]) {
-        //         b.push(Number(button.value));
-        //         memArr = [Number(b.join(""))];
-        //         console.log("b",b);
-        //         console.log("memarrb", memArr);
-        //     };
-        // };
-
-
-        // if (button.classList.contains("number")) {
-        //     if (typeof (a[a.length - 1]) === "number") {
-        //         a.push(Number(button.value));
-        //         memArr = [Number(a.join(""))];
-        //         console.log("a", a);
-        //         console.log(memArr);
-
-        //     } else {
-
-        //         //add
-        //         //else if memArr length-1 is operator then do b
-        //         memArr = a.push(Number(button.value));
-        //         console.log(memArr);
-        //     };
-
-
-        // } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("operator")) {
-        //     operator = button.textContent;
-        //     memArr.push(operator);
-        //     console.log(memArr);
-
-        // } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
-
-
-        // } else {
-        // };
-
-
     };
 });
 
 btnAllClear.onclick = () => {
     memArr = [];
     a = [];
-    operator = [];
     b = [];
+    display = [];
     calcText.value = memArr;
 };
 
@@ -132,30 +93,3 @@ function divide(a, b) {
 function operate(operator, a, b) {
     return window[operator](a, b);
 };
-
-
-
-
-// const add = function add(arr) {
-//     return arr.lengthS
-//         ? arr.reduce((accumulator, nextItem) => accumulator + nextItem)
-//         : 0;
-// };
-
-// const subtract = function subtract(arr) {
-//     return arr.length
-//         ? arr.reduce((accumulator, nextItem) => accumulator - nextItem)
-//         : 0;
-// };
-
-// const multiply = function multiply(arr) {
-//     return arr.length
-//         ? arr.reduce((accumulator, nextItem) => accumulator * nextItem)
-//         : 0;
-// };
-
-// const divide = function divide(arr) {
-//     return arr.length
-//         ? arr.reduce((accumulator, nextItem) => accumulator / nextItem)
-//         : 0;
-// };
