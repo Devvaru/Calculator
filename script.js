@@ -41,7 +41,7 @@ buttons.forEach((button) => {
             display.push(button.textContent);
             calcText.value = display.join("");
 
-        } else if (button.classList.contains("operator")) {
+        } else if (button.classList.contains("operator") && memArr.length > 0) {
             operator = button.id;
             a = Number(memArr.join(""));
             memArr = [];
@@ -69,9 +69,7 @@ btnAllClear.onclick = () => {
 };
 
 btnClear.onclick = () => {
-    memArr.splice(memArr.length - 1, 1);
-    calcText.value = memArr.join("");
-    console.log(memArr);
+    
 };
 
 function add(a, b) {
