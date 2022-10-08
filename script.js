@@ -37,6 +37,7 @@ buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
+            //prevent from adding new numbers to prev result
             memArr.push(Number(button.value));
             console.log(memArr)
 

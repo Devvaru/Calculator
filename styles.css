@@ -7,6 +7,18 @@ body {
     background: linear-gradient(227deg, #99A5B2 10%, #E9EAEB 83%);
 }
 
+#frameShadow {
+    height: 700px;
+    width: 360px;
+    border-radius: 60px;
+    background: rgba(67, 90, 108, 0.50);
+    filter: blur(29px);
+    z-index: -1;
+    position: absolute;
+    margin: 50px 0px 0px 50px;
+    padding: 0px 50px 50px 0px;
+}
+
 #frame {
     height: 700px;
     width: 360px;
@@ -17,7 +29,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    padding: 30px 30px 0px 30px;
+    padding: 50px 30px 0px 30px;
 }
 
 #calcText {
@@ -26,7 +38,7 @@ body {
     background-color: transparent;
     border-style: none;
     color: #fff;
-    font-size: 60px;
+    font-size: 70px;
     text-align: right;
     padding: 25px;
 }
@@ -36,7 +48,7 @@ body {
     width: 100%;
     background: linear-gradient(180deg, rgba(73, 80, 85, 0.58) 0%, rgba(181, 189, 198, 0.53) 100%);
     border-radius: 60px 0px 60px 60px;
-    padding: 30px;
+    padding: 50px 30px 50px 30px;
 }
 
 .btnContainer {
@@ -57,15 +69,18 @@ body {
 button {
     border-radius: 20px;
     border-style: none;
-    font-size: 35px;
+    font-size: 45px;
     color: #52585E;
+    transition-duration: 0.25s;
     /* width: 70px;
     height: 70px; */
 }
 
 button:hover {
-    opacity: 80%;
     cursor: pointer;
+    box-shadow: 2.5px 2.5px 15px rgba(93, 102, 110, 0.65);
+    z-index: 5;
+    scale: 1.05;
 }
 
 /* #btn0 {
@@ -75,6 +90,10 @@ button:hover {
 .btnWhite {
     background-color: #FFF6F1;
 }
+
+/* .btnWhite:hover {
+
+} */
 
 .btnPink {
     background-color: #FFCEB2;
