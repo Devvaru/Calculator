@@ -31,6 +31,9 @@ let a = [];
 let operator;
 let b = [];
 let display = [];
+let tempArr;
+
+console.log(typeof operator)
 
 buttons.forEach((button) => {
     button.onclick = () => {
@@ -49,15 +52,19 @@ buttons.forEach((button) => {
             display = Array.from(display);
             display.push(button.textContent);
             calcText.value = display.join("");
-
-        } else if (button.classList.contains("equal")) {
+        } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) { 
             b = Number(memArr.join(""));
 
-            memArr = [operate(operator,a,b)];
+            memArr = [operate(operator, a, b)];
             display = memArr;
             calcText.value = display;
+
+            operator = 0;
+
         };
     };
+
+    // a.toString()).length > 0
 });
 
 btnAllClear.onclick = () => {
@@ -69,7 +76,7 @@ btnAllClear.onclick = () => {
 };
 
 btnClear.onclick = () => {
-    
+
 };
 
 function add(a, b) {
