@@ -35,19 +35,20 @@ buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
-            memArr.push(Number(button.value))
-            console.log(memArr)
+            memArr.push(Number(button.value));
+            console.log("num", memArr)
+
         } else if (button.classList.contains("operator")) {
             operator = button.id;
             a = Number(memArr.join(""));
             memArr = [];
-            console.log(operator, a, memArr)
+
         } else if (button.classList.contains("equal")) {
             b = Number(memArr.join(""));
-            // operate(operator,a,b);
-            console.log(typeof a, typeof b)
             console.log(operator, a, b)
             console.log(operate(operator,a,b));
+
+            memArr = [operate(operator,a,b)];
         };
 
 
