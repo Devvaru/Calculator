@@ -92,15 +92,19 @@ btnAllClear.onclick = () => {
     memArr = [];
     a = [];
     b = [];
-    display = [];
-    calcText.textContent = 0;
+    display = [0];
+    calcText.textContent = display.join("");
 };
 
 btnClear.onclick = () => {
     display.pop();
+
+    if (display.length < 1) {
+        display = [0];
+    };
+
     calcText.textContent = display.join("");
     console.log(memArr, display);
-    return memArr;
 };
 
 function add(a, b) {
