@@ -27,8 +27,8 @@ const btnEqual = document.querySelector("#btnEqual");
 const buttons = document.querySelectorAll("button");
 
 let memArr = [];
-let a = [];
 let operator;
+let a = [];
 let b = [];
 let display = [];
 let tempArr;
@@ -39,10 +39,20 @@ buttons.forEach((button) => {
         if (button.classList.contains("number")) {
             //prevent from adding new numbers to prev result
             memArr.push(Number(button.value));
-            console.log(memArr)
+            console.log("memarr", memArr)
 
-            display.push(button.value);
-            calcText.textContent = display.join("");
+            if (typeof operator == "string") { //if a and b are declared
+                display = Array.from(display);
+                display.push(button.textContent);
+                calcText.textContent = display.join("");
+
+            } else { //if a and b are not declared
+                display = memArr;
+                console.log("display", display)
+
+                calcText.textContent = display.join("");
+                console.log("calcText", calcText.textContent)
+            };
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
             operator = button.id;
@@ -55,20 +65,25 @@ buttons.forEach((button) => {
 
         } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
             b = Number(memArr.join(""));
-            console.log(operator, typeof operator)
 
-            if (operator == "divide" && b == 0) { 
+            //dividing by zero
+            if (operator == "divide" && b == 0) {
                 memArr = "Uh Oh"
                 display = memArr;
                 calcText.textContent = display;
 
                 operator = 0;
-            } else {
+
+            } else { //regular operations
                 memArr = [operate(operator, a, b)];
                 display = memArr;
                 calcText.textContent = display;
-    
+
                 operator = 0;
+                a = [];
+                b = [];
+
+                console.log("result memarr", memArr)
             };
         };
     };
