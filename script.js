@@ -55,9 +55,10 @@ buttons.forEach((button) => {
 
         } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
             b = Number(memArr.join(""));
+            console.log(operator, typeof operator)
 
-            if (operator == divide && b == 0) { //doesn't work
-                memArr = "snark"
+            if (operator == "divide" && b == 0) { 
+                memArr = "Uh Oh"
                 display = memArr;
                 calcText.textContent = display;
 
