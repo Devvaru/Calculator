@@ -97,7 +97,10 @@ btnAllClear.onclick = () => {
 };
 
 btnClear.onclick = () => {
-
+    display.pop();
+    calcText.textContent = display.join("");
+    console.log(memArr, display);
+    return memArr;
 };
 
 function add(a, b) {
