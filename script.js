@@ -42,7 +42,7 @@ buttons.forEach((button) => {
             console.log(memArr)
 
             display.push(button.value);
-            calcText.value = display.join("");
+            calcText.textContent = display.join("");
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
             operator = button.id;
@@ -51,20 +51,26 @@ buttons.forEach((button) => {
 
             display = Array.from(display);
             display.push(button.textContent);
-            calcText.value = display.join("");
-        } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) { 
+            calcText.textContent = display.join("");
+
+        } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
             b = Number(memArr.join(""));
 
-            memArr = [operate(operator, a, b)];
-            display = memArr;
-            calcText.value = display;
+            if (operator == divide && b == 0) { //doesn't work
+                memArr = "snark"
+                display = memArr;
+                calcText.textContent = display;
 
-            operator = 0;
-
+                operator = 0;
+            } else {
+                memArr = [operate(operator, a, b)];
+                display = memArr;
+                calcText.textContent = display;
+    
+                operator = 0;
+            };
         };
     };
-
-    // a.toString()).length > 0
 });
 
 btnAllClear.onclick = () => {
@@ -72,7 +78,7 @@ btnAllClear.onclick = () => {
     a = [];
     b = [];
     display = [];
-    calcText.value = memArr;
+    calcText.textContent = 0;
 };
 
 btnClear.onclick = () => {
