@@ -33,19 +33,21 @@ let b = [];
 let display = [0];
 let tempArr;
 
-console.log("start",a, a.length, memArr)
-
 buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
             if (memArr == 0 && a.length < 1) { //if you don't want to use 0 as a
                 memArr = [];
-                console.log("memarr test", memArr)
             };
 
-            memArr.push(Number(button.value));
-            console.log("memarr", memArr)
+            if (button.value == "." && memArr[memArr.length - 1] != ".") { //using decimal
+                memArr.push(button.value);
+
+            } else if (button.value != ".") {
+                memArr.push(Number(button.value));
+                console.log("memarr", memArr)
+            };
 
             if (typeof operator == "string") { //if a is declared
                 display = Array.from(display);
@@ -112,7 +114,6 @@ btnClear.onclick = () => {
     };
 
     calcText.textContent = display.join("");
-    console.log(memArr, display);
 };
 
 function add(a, b) {
