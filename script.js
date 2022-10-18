@@ -26,21 +26,28 @@ const btnEqual = document.querySelector("#btnEqual");
 
 const buttons = document.querySelectorAll("button");
 
-let memArr = [];
+let memArr = [0];
 let operator;
 let a = [];
 let b = [];
-let display = [];
+let display = [0];
 let tempArr;
+
+console.log("start",a, a.length, memArr)
 
 buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
+            if (memArr == 0 && a.length < 1) { //if you don't want to use 0 as a
+                memArr = [];
+                console.log("memarr test", memArr)
+            };
+
             memArr.push(Number(button.value));
             console.log("memarr", memArr)
 
-            if (typeof operator == "string") { //if a and b are declared
+            if (typeof operator == "string") { //if a is declared
                 display = Array.from(display);
                 display.push(button.textContent);
                 calcText.textContent = display.join("");
@@ -89,7 +96,7 @@ buttons.forEach((button) => {
 });
 
 btnAllClear.onclick = () => {
-    memArr = [];
+    memArr = [0];
     a = [];
     b = [];
     display = [0];
