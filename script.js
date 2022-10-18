@@ -108,6 +108,7 @@ btnClear.onclick = () => {
 
     if (display.length < 1) {
         display = [0];
+        memArr = [0];
     };
 
     calcText.textContent = display.join("");
