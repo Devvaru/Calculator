@@ -37,11 +37,11 @@ buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
-            if (memArr == 0 && numA.length < 1) { //if you don't want to use 0 as a
+            if (memArr == 0 && numA.length < 1) { //if you don't want to use 0 as numA
                 memArr = [];
             };
 
-            if (button.value == "." && memArr[memArr.length - 1] != ".") { //using decimal
+            if (button.value == "." && !memArr.includes(".")) { //using decimal
                 memArr.push(button.value);
 
             } else if (button.value != ".") {
@@ -52,14 +52,18 @@ buttons.forEach((button) => {
             if (typeof operator == "string") { //if numA is declared
                 display = Array.from(display);
                 display.push(button.textContent);
+                console.log("display b", display)
                 calcText.textContent = display.join("");
+                console.log("calcText b", calcText.textContent)
+
+                //decimal still appears multiple times in b, but not in a
 
             } else { //if numA and numB are not declared
                 display = memArr;
-                console.log("display", display)
+                console.log("display a", display)
 
                 calcText.textContent = display.join("");
-                console.log("calcText", calcText.textContent)
+                console.log("calcText a", calcText.textContent)
             };
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
@@ -69,7 +73,9 @@ buttons.forEach((button) => {
 
             display = Array.from(display);
             display.push(button.textContent);
+            console.log("display op", display)
             calcText.textContent = display.join("");
+            console.log("calcText op", calcText.textContent)
 
         } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
             numB = Number(memArr.join(""));
@@ -88,7 +94,7 @@ buttons.forEach((button) => {
                 calcText.textContent = display;
 
                 operator = 0;
-                numA = [];
+                numA = memArr;
                 numB = [];
 
                 console.log("result memarr", memArr)
