@@ -83,7 +83,8 @@ buttons.forEach((button) => {
                 operator = 0;
 
             } else { //regular operations
-                memArr = [operate(operator, a, b)];
+                memArr = operate(operator, a, b);
+                memArr = [Number(+memArr.toFixed(2))];
                 display = memArr;
                 calcText.textContent = display;
 
