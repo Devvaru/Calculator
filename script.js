@@ -28,8 +28,8 @@ const buttons = document.querySelectorAll("button");
 
 let memArr = [0];
 let operator;
-let a = [];
-let b = [];
+let numA = [];
+let numB = [];
 let display = [0];
 let tempArr;
 
@@ -37,7 +37,7 @@ buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
-            if (memArr == 0 && a.length < 1) { //if you don't want to use 0 as a
+            if (memArr == 0 && numA.length < 1) { //if you don't want to use 0 as a
                 memArr = [];
             };
 
@@ -49,12 +49,12 @@ buttons.forEach((button) => {
                 console.log("memarr", memArr)
             };
 
-            if (typeof operator == "string") { //if a is declared
+            if (typeof operator == "string") { //if numA is declared
                 display = Array.from(display);
                 display.push(button.textContent);
                 calcText.textContent = display.join("");
 
-            } else { //if a and b are not declared
+            } else { //if numA and numB are not declared
                 display = memArr;
                 console.log("display", display)
 
@@ -64,7 +64,7 @@ buttons.forEach((button) => {
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
             operator = button.id;
-            a = Number(memArr.join(""));
+            numA = Number(memArr.join(""));
             memArr = [];
 
             display = Array.from(display);
@@ -72,10 +72,9 @@ buttons.forEach((button) => {
             calcText.textContent = display.join("");
 
         } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
-            b = Number(memArr.join(""));
+            numB = Number(memArr.join(""));
 
-            //dividing by zero
-            if (operator == "divide" && b == 0) {
+            if (operator == "divide" && numB == 0) { //dividing by zero
                 memArr = "Uh Oh"
                 display = memArr;
                 calcText.textContent = display;
@@ -83,14 +82,14 @@ buttons.forEach((button) => {
                 operator = 0;
 
             } else { //regular operations
-                memArr = operate(operator, a, b);
+                memArr = operate(operator, numA, numB);
                 memArr = [Number(+memArr.toFixed(2))];
                 display = memArr;
                 calcText.textContent = display;
 
                 operator = 0;
-                a = [];
-                b = [];
+                numA = [];
+                numB = [];
 
                 console.log("result memarr", memArr)
             };
@@ -100,8 +99,8 @@ buttons.forEach((button) => {
 
 btnAllClear.onclick = () => {
     memArr = [0];
-    a = [];
-    b = [];
+    numA = [];
+    numB = [];
     display = [0];
     calcText.textContent = display.join("");
 };
@@ -117,22 +116,22 @@ btnClear.onclick = () => {
     calcText.textContent = display.join("");
 };
 
-function add(a, b) {
-    return a + b;
+function add(numA, numB) {
+    return numA + numB;
 };
 
-function subtract(a, b) {
-    return a - b;
+function subtract(numA, numB) {
+    return numA - numB;
 };
 
-function multiply(a, b) {
-    return a * b;
+function multiply(numA, numB) {
+    return numA * numB;
 };
 
-function divide(a, b) {
-    return a / b;
+function divide(numA, numB) {
+    return numA / numB;
 };
 
-function operate(operator, a, b) {
-    return window[operator](a, b);
+function operate(operator, numA, numB) {
+    return window[operator](numA, numB);
 };
