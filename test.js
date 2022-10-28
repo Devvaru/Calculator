@@ -2,44 +2,69 @@ buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
-            if (typeof (memArr[memArr.length - 1]) === "number") {
-                console.log("success");
-                
-
-                // memArr[memArr.length - 1].toString();
-                // memArr.splice([memArr.length-1][0], 1, (button.value));
-                // memArr.join();
-                // console.log(memArr);
-
-
-                // memArr[memArr.length - 1][memArr.length].push(Number(button.value));
-
-                // memArr.push(Number(button.value));
-                // memArr.join();
-            } else {
-                
-                memArr.push([Number(button.value)]);
-               
+            if (memArr == 0 && numA.length < 1) { //if you don't want to use 0 as numA
+                memArr = [];
             };
 
-            calcText.value = memArr.join("");
+            if (button.value == "." && !memArr.includes(".")) { //using decimal
+                memArr.push(button.value);
+                console.log("decimal", button.value)
 
-            console.log(memArr);
+            } else if (button.value != ".") {
+                memArr.push(Number(button.value));
+                console.log("memarr", memArr)
+            };
 
-            calcText.textContent = button.value;
+            if (typeof operator == "string") { //if numA is declared
+                display = Array.from(display);
+                display.push(button.textContent);
+                console.log("display b", display)
+                calcText.textContent = display.join("");
+                console.log("calcText b", calcText.textContent)
 
-        } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("operator")) {
-            memArr.push(button.textContent);
-            calcText.value = memArr.join("");
+                //decimal still appears multiple times in b, but not in a
 
-            console.log(memArr);
+            } else { //if numA and numB are not declared
+                display = memArr;
+                console.log("display a", display)
 
-            calcText.textContent = button.textContent;
+                calcText.textContent = display.join("");
+                console.log("calcText a", calcText.textContent)
+            };
 
-        } else if (typeof memArr[memArr.length - 1] == "number" && button.classList.contains("equal")) {
+        } else if (button.classList.contains("operator") && memArr.length > 0) {
+            operator = button.id;
+            numA = Number(memArr.join(""));
+            memArr = [];
 
-        } else {
-            console.log(button.id);
+            display = Array.from(display);
+            display.push(button.textContent);
+            console.log("display op", display)
+            calcText.textContent = display.join("");
+            console.log("calcText op", calcText.textContent)
+
+        } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
+            numB = Number(memArr.join(""));
+
+            if (operator == "divide" && numB == 0) { //dividing by zero
+                memArr = "Uh Oh"
+                display = memArr;
+                calcText.textContent = display;
+
+                operator = 0;
+
+            } else { //regular operations
+                memArr = operate(operator, numA, numB);
+                memArr = [Number(+memArr.toFixed(2))];
+                display = memArr;
+                calcText.textContent = display;
+
+                operator = 0;
+                numA = memArr;
+                numB = [];
+
+                console.log("result memarr", memArr)
+            };
         };
     };
 });
