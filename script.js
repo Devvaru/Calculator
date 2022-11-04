@@ -28,6 +28,7 @@ const buttons = document.querySelectorAll("button");
 
 let memArr = [0];
 let operator = 0;
+let operatorValue;
 let numA = [];
 let numB = [];
 let display = [0];
@@ -80,10 +81,12 @@ buttons.forEach((button) => {
                 memArr = operate(operator, numA, numB);
                 
                 numA = memArr;
+                console.log("numA", numA) //to display
 
                 memArr = [];
 
                 operator = button.id;
+                operatorValue = button.textContent;
 
                 numB = [];
 
@@ -91,6 +94,8 @@ buttons.forEach((button) => {
                 numA = Number(memArr.join(""));
 
                 operator = button.id;
+                operatorValue = button.textContent;
+                console.log("operatorvalue", operatorValue)
                 memArr = [];
 
             };
@@ -111,8 +116,11 @@ buttons.forEach((button) => {
                 numA = memArr;
                 numB = [];
 
+                operatorValue = button.textContent;
+
             };
         };
+        toDisplay();
         console.log(memArr);
         console.log(operator);
     };
@@ -122,17 +130,37 @@ btnAllClear.onclick = () => {
     memArr = [0];
     numA = [];
     numB = [];
-    display = [0];
-    calcText.textContent = display.join("");
+
+    toDisplay();
+    // display = [0];
+    // calcText.textContent = display.join("");
 };
 
 btnClear.onclick = () => {
-    display.pop();
+    memArr.pop();
+    [display].pop(); //WIP
+    toDisplay();
 
     if (display.length < 1) {
-        display = [0];
+        // display = [0];
         memArr = [0];
     };
 
-    calcText.textContent = display.join("");
+    // calcText.textContent = display.join("");
+};
+
+function toDisplay() {
+    if (typeof numA !== "number") {
+        display = memArr.join('');
+    } else if (typeof numA === "number" && operator !== 0) {
+        display = numA + operatorValue; //btnAdd.value ?
+        console.log("b", numA + operatorValue)
+    } else if (typeof numB !== "number" && typeof numA === "number" && operator !== 0) {
+        display = numA + operatorValue + memArr;
+        console.log("c", numA + operatorValue + memArr)
+    } else if (typeof numA === "number" && typeof numB === "number" && operator !== 0) {
+        display = memArr.join('');
+    }
+
+    calcText.textContent = display;
 };
