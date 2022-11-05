@@ -95,7 +95,6 @@ buttons.forEach((button) => {
 
                 operator = button.id;
                 operatorValue = button.textContent;
-                console.log("operatorvalue", operatorValue)
                 memArr = [];
 
             };
@@ -153,14 +152,18 @@ function toDisplay() {
     if (typeof numA !== "number") {
         display = memArr.join('');
     } else if (typeof numA === "number" && operator !== 0) {
-        display = numA + operatorValue; //btnAdd.value ?
+        display = numA + operatorValue;
         console.log("b", numA + operatorValue)
-    } else if (typeof numB !== "number" && typeof numA === "number" && operator !== 0) {
-        display = numA + operatorValue + memArr;
-        console.log("c", numA + operatorValue + memArr)
+        console.log("b", numB)
+
+        if (typeof numB !== "number") {
+            display = numA + operatorValue + memArr;
+            console.log("c", numA + operatorValue + memArr)
+        };
+        
     } else if (typeof numA === "number" && typeof numB === "number" && operator !== 0) {
         display = memArr.join('');
-    }
+    };
 
     calcText.textContent = display;
 };
