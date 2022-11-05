@@ -75,11 +75,11 @@ buttons.forEach((button) => {
         } else if (button.classList.contains("operator") && memArr.length > 0) {
 
             if (typeof numA == "number" && typeof operator == "string") {
-                
+
                 numB = Number(memArr.join(""));
 
                 memArr = operate(operator, numA, numB);
-                
+
                 numA = memArr;
                 console.log("numA", numA) //to display
 
@@ -116,7 +116,6 @@ buttons.forEach((button) => {
                 numB = [];
 
                 operatorValue = button.textContent;
-
             };
         };
         toDisplay();
@@ -129,41 +128,35 @@ btnAllClear.onclick = () => {
     memArr = [0];
     numA = [];
     numB = [];
-
     toDisplay();
-    // display = [0];
-    // calcText.textContent = display.join("");
 };
 
 btnClear.onclick = () => {
-    memArr.pop();
-    [display].pop(); //WIP
-    toDisplay();
-
     if (display.length < 1) {
         // display = [0];
         memArr = [0];
+    } else {
+        memArr.pop();
+        [display].pop();
     };
-
-    // calcText.textContent = display.join("");
+    toDisplay();
 };
 
 function toDisplay() {
-    if (typeof numA !== "number") {
+    if (typeof numA !== "number") { //displays numA
         display = memArr.join('');
-    } else if (typeof numA === "number" && operator !== 0) {
+
+    } else if (typeof numA === "number" && operator !== 0) { //displays numA and operator
         display = numA + operatorValue;
         console.log("b", numA + operatorValue)
         console.log("b", numB)
 
-        if (typeof numB !== "number") {
-            display = numA + operatorValue + memArr;
+        if (typeof numB !== "number") { //displays numA and operator and numB
+            display = numA + operatorValue + memArr.join('');
             console.log("c", numA + operatorValue + memArr)
         };
-        
-    } else if (typeof numA === "number" && typeof numB === "number" && operator !== 0) {
-        display = memArr.join('');
+    } else if (memArr === "Uh Oh") {
+        display = memArr;
     };
-
     calcText.textContent = display;
 };
