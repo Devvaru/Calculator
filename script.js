@@ -57,11 +57,9 @@ buttons.forEach((button) => {
     button.onclick = () => {
 
         if (button.classList.contains("number")) {
-
             //Zero is default unless another number is entered 
             if (memArr == 0 && numA.length < 1) { //if you don't want to use 0 as numA
                 memArr = [];
-
             };
 
             //Entering decimal vs number
@@ -73,54 +71,39 @@ buttons.forEach((button) => {
             };
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
-
             if (typeof numA == "number" && typeof operator == "string") {
 
                 numB = Number(memArr.join(""));
-
                 memArr = operate(operator, numA, numB);
-
                 numA = memArr;
-                console.log("numA", numA) //to display
-
                 memArr = [];
-
                 operator = button.id;
                 operatorValue = button.textContent;
-
                 numB = [];
 
             } else {
                 numA = Number(memArr.join(""));
-
                 operator = button.id;
                 operatorValue = button.textContent;
                 memArr = [];
-
             };
 
         } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
             numB = Number(memArr.join(""));
-
             if (operator == "divide" && numB == 0) { //dividing by zero
                 memArr = "Uh Oh"
-
                 operator = 0;
 
             } else { //regular operations
                 memArr = operate(operator, numA, numB);
                 memArr = [Number(+memArr.toFixed(2))];
-
                 operator = 0;
                 numA = memArr;
                 numB = [];
-
                 operatorValue = button.textContent;
             };
         };
         toDisplay();
-        console.log(memArr);
-        console.log(operator);
     };
 });
 
@@ -148,15 +131,13 @@ function toDisplay() {
 
     } else if (typeof numA === "number" && operator !== 0) { //displays numA and operator
         display = numA + operatorValue;
-        console.log("b", numA + operatorValue)
-        console.log("b", numB)
 
         if (typeof numB !== "number") { //displays numA and operator and numB
             display = numA + operatorValue + memArr.join('');
-            console.log("c", numA + operatorValue + memArr)
         };
-    } else if (memArr === "Uh Oh") {
-        display = memArr;
+
+    } else if (memArr === "Uh Oh") { //displays result of dividing by zero
+        display = memArr; 
     };
     calcText.textContent = display;
 };
