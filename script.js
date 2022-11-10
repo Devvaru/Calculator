@@ -68,7 +68,13 @@ buttons.forEach((button) => {
 
             } else if (button.value != ".") { //entering numbers into memArr to be added to numA or numB later
                 memArr.push(Number(button.value));
-            };
+            }; if 
+
+            //Entering positive or negative integer
+            (button.value === "-") {
+                memArr = memArr.unshift("-");
+                console.log(memArr)
+            }
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
             if (typeof numA == "number" && typeof operator == "string") {
@@ -115,29 +121,44 @@ btnAllClear.onclick = () => {
 };
 
 btnClear.onclick = () => {
-    if (display.length < 1) {
-        // display = [0];
-        memArr = [0];
-    } else {
+
+    if (memArr.length > 0) {
         memArr.pop();
-        [display].pop();
+    };
+
+    if (typeof numA === "number" && operator === 0 && memArr.length === 0) {
+       memArr = Array.from(numA.toString());
+       memArr.pop();
+       numA = [];
+    };
+
+    if (typeof numA === "number" && operator !== 0 && memArr.length === 0) {
+        operator = 0;
+    };
+
+    //Default to zero
+    if (memArr.length === 0 && typeof numA !== "number" && typeof numB !== "number") {
+        memArr = [0];
     };
     toDisplay();
 };
 
 function toDisplay() {
-    if (typeof numA !== "number") { //displays numA
+    if (typeof numA !== "number") { //displays numA (memArr)
         display = memArr.join('');
+
+    } else if (typeof numA === "number" && operator === 0) {
+        display = numA;
 
     } else if (typeof numA === "number" && operator !== 0) { //displays numA and operator
         display = numA + operatorValue;
 
-        if (typeof numB !== "number") { //displays numA and operator and numB
+        if (typeof numB !== "number") { //displays numA and operator and 'numB' (memArr)
             display = numA + operatorValue + memArr.join('');
         };
 
     } else if (memArr === "Uh Oh") { //displays result of dividing by zero
-        display = memArr; 
+        display = memArr;
     };
     calcText.textContent = display;
 };
