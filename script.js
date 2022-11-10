@@ -68,13 +68,12 @@ buttons.forEach((button) => {
 
             } else if (button.value != ".") { //entering numbers into memArr to be added to numA or numB later
                 memArr.push(Number(button.value));
-            }; if 
+            };
 
-            //Entering positive or negative integer
-            (button.value === "-") {
-                memArr = memArr.unshift("-");
-                console.log(memArr)
-            }
+        } else if (button.value === "-" && memArr.length > 0) { //toggle positive and negative integer
+            memArr = Number(memArr.join(""));
+            memArr *= -1;
+            memArr = Array.from(memArr.toString())
 
         } else if (button.classList.contains("operator") && memArr.length > 0) {
             if (typeof numA == "number" && typeof operator == "string") {
@@ -127,9 +126,9 @@ btnClear.onclick = () => {
     } else if (typeof numA === "number" && operator !== 0 && memArr.length === 0) { // remove operator
         operator = 0;
     } else if (typeof numA === "number" && operator === 0 && memArr.length === 0) { //remove numA
-       memArr = Array.from(numA.toString());
-       memArr.pop();
-       numA = [];
+        memArr = Array.from(numA.toString());
+        memArr.pop();
+        numA = [];
     };
 
     //Default to zero
