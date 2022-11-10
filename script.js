@@ -73,7 +73,7 @@ buttons.forEach((button) => {
         } else if (button.classList.contains("equal") && typeof operator == "string" && memArr.length > 0) {
             numB = Number(memArr.join(""));
             if (operator == "divide" && numB == 0) { //dividing by zero
-                memArr = "Uh Oh"
+                memArr = "Uh Oh";
                 operator = 0;
 
             } else { //regular operations
@@ -112,12 +112,15 @@ btnClear.onclick = () => {
     if (memArr.length === 0 && typeof numA !== "number" && typeof numB !== "number") {
         memArr = [0];
     };
-
     toDisplay();
 };
 
 function toDisplay() {
-    if (typeof numA !== "number") { //displays numA (memArr)
+
+    if (memArr === "Uh Oh") { //displays result of dividing by zero
+        display = memArr;
+
+    } else if (typeof numA !== "number") { //displays numA (memArr)
         display = memArr.join('');
 
     } else if (typeof numA === "number" && operator === 0) {
@@ -129,9 +132,6 @@ function toDisplay() {
         if (memArr.length > 0) { //displays numA and operator and 'numB' (memArr)
             display = numA + operatorValue + memArr.join('');
         };
-
-    } else if (memArr === "Uh Oh") { //displays result of dividing by zero
-        display = memArr;
     };
     calcText.textContent = display;
 };
