@@ -122,24 +122,23 @@ btnAllClear.onclick = () => {
 
 btnClear.onclick = () => {
 
-    if (memArr.length > 0) {
+    if (memArr.length > 0) { //remove memArr
         memArr.pop();
-    };
-
-    if (typeof numA === "number" && operator === 0 && memArr.length === 0) {
+    } else if (typeof numA === "number" && operator !== 0 && memArr.length > 0) { //remove memArr meant for numB
+        memArr.pop();
+    } else if (typeof numA === "number" && operator !== 0 && memArr.length === 0) { // remove operator
+        operator = 0;
+    } else if (typeof numA === "number" && operator === 0 && memArr.length === 0) { //remove numA
        memArr = Array.from(numA.toString());
        memArr.pop();
        numA = [];
-    };
-
-    if (typeof numA === "number" && operator !== 0 && memArr.length === 0) {
-        operator = 0;
     };
 
     //Default to zero
     if (memArr.length === 0 && typeof numA !== "number" && typeof numB !== "number") {
         memArr = [0];
     };
+
     toDisplay();
 };
 
@@ -153,7 +152,7 @@ function toDisplay() {
     } else if (typeof numA === "number" && operator !== 0) { //displays numA and operator
         display = numA + operatorValue;
 
-        if (typeof numB !== "number") { //displays numA and operator and 'numB' (memArr)
+        if (memArr.length > 0) { //displays numA and operator and 'numB' (memArr)
             display = numA + operatorValue + memArr.join('');
         };
 
