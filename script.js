@@ -122,9 +122,7 @@ btnAllClear.onclick = () => {
 
 btnClear.onclick = () => {
 
-    if (memArr.length > 0) { //remove memArr
-        memArr.pop();
-    } else if (typeof numA === "number" && operator !== 0 && memArr.length > 0) { //remove memArr meant for numB
+    if (memArr.length > 0) { //remove memArr meant for numA or numB
         memArr.pop();
     } else if (typeof numA === "number" && operator !== 0 && memArr.length === 0) { // remove operator
         operator = 0;
