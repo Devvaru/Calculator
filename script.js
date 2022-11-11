@@ -78,7 +78,16 @@ buttons.forEach((button) => {
 
             } else { //regular operations
                 memArr = operate(operator, numA, numB);
-                memArr = [Number(+memArr.toFixed(2))];
+                memArr = memArr.toString();
+
+                if (memArr.length >= 7) {
+                    memArr = Number(memArr);
+                    memArr = [memArr.toExponential(2)];
+                } else {
+                    memArr = Number(memArr);
+                    memArr = [+memArr.toFixed(2)];
+                };
+                
                 operator = 0;
                 numA = memArr;
                 numB = [];
